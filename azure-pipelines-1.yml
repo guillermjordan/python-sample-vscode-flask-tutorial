@@ -16,6 +16,43 @@ pool:
   vmImage: ubuntu-latest
 
 jobs: 
-- job: helloworld
+jobs:
+
+- job: A
   steps:
-    - script: echo "Hello, $(name)"
+
+  - script: echo' job A.'
+
+
+- job: B
+  dependsOn: A
+  steps:
+
+  - script: echo' job B.'
+
+
+- job: C
+  dependsOn: A
+  steps:
+
+  - script: echo' job C.'
+
+
+- job: D
+  dependsOn:
+
+  - B
+  - C
+  steps:
+
+  - script: echo' job D.'
+
+
+- job: E
+  dependsOn:
+
+  - B
+  - D
+  steps:
+
+  - script: echo' job E.'
